@@ -1,4 +1,10 @@
 click==6.7
+boost==0.1
+cmake==0.7.1
+boost-py
+face_recognition_models
+face_recognition
+dlib>=19.3.0
 enum-compat==0.0.2
 enum34==1.1.6
 eventlet==0.20.0
@@ -18,5 +24,6 @@ Pillow==4.2.1
 python-engineio==1.7.0
 python-socketio==1.7.7
 redis==2.10.5
+scipy
 six==1.10.0
 Werkzeug==0.12.2
