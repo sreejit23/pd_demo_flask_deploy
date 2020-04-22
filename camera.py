@@ -34,14 +34,14 @@ class Camera(object):
         ################## where the hard work is done ############
         # output_img is an PIL image
         output_img = self.makeup_artist.apply_makeup(input_img)
-        opencvImage = cv2.cvtColor(np.array(output_img), cv2.COLOR_RGB2BGR)
-        cv2.resize(opencvImage, (400,560), interpolation=cv2.INTER_AREA)
+        frame = cv2.cvtColor(np.array(output_img), cv2.COLOR_RGB2BGR)
+        cv2.resize(frame, (400,560), interpolation=cv2.INTER_AREA)
 
         im = cv2.imread("newmask.png")
 
         # cv2.rectangle(image, (400, 300), (700, 500), (178, 190, 181), 5)
 
-        frame = cv2.flip(opencvImage, 2)
+        # frame = cv2.flip(opencvImage, 2)
 
         gaze.refresh(frame)
 
@@ -107,7 +107,7 @@ class Camera(object):
     def keep_processing(self):
         while True:
             self.process_one()
-            sleep(0.01)
+            # sleep(0.01)
 
     def enqueue_input(self, input):
         self.to_process.append(input)
