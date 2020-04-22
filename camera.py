@@ -1,8 +1,15 @@
 import threading
 import binascii
+import cv2
 from time import sleep
 from utils import base64_to_pil_image, pil_image_to_base64
+import numpy as np
+from PIL import Image
+from gaze_tracking import GazeTracking
+from scipy.spatial import distance
 
+gaze = GazeTracking()
+frameRate = 20.0
 
 class Camera(object):
     def __init__(self, makeup_artist):
@@ -27,7 +34,7 @@ class Camera(object):
         ################## where the hard work is done ############
         # output_img is an PIL image
         output_img = self.makeup_artist.apply_makeup(input_img)
-        opencvImage = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
+        opencvImage = cv2.cvtColor(np.array(output_img), cv2.COLOR_RGB2BGR)
         cv2.resize(opencvImage, (400,560), interpolation=cv2.INTER_AREA)
 
         im = cv2.imread("newmask.png")
